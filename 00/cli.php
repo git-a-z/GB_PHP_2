@@ -7,17 +7,15 @@ use GeekBrains\Person\Person;
 use GeekBrains\Blog\Post;
 use GeekBrains\Blog\Comment;
 
-$faker = Faker\Factory::create();
-
 switch ($argv[1]) {
     case 'user':
-        echo getName($faker);
+        echo getName(Faker\Factory::create());
         break;
     case 'post':
-        echo getPost($faker);
+        echo getPost(Faker\Factory::create());
         break;
     case 'comment':
-        echo getComment($faker);
+        echo getComment(Faker\Factory::create());
         break;
 }
 
