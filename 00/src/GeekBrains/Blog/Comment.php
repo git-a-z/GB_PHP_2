@@ -14,6 +14,7 @@ class Comment
 
     public function __toString()
     {
-        return $this->author . ' комментирует статью ( ' . $this->post . ' ) — ' . $this->text;
+        return sprintf('%s комментирует статью ( %s ) — %s', 
+            $this->author, $this->post, $this->text);
     }
 }

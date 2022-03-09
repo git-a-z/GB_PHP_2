@@ -14,6 +14,7 @@ class Post
 
     public function __toString()
     {
-        return $this->author . ': ' . $this->title . ' ' . $this->text;
+        return sprintf('%s пишет в статье "%s" — %s', 
+            $this->author, $this->title, $this->text);
     }
 }

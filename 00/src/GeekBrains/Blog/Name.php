@@ -1,6 +1,6 @@
 <?php
 
-namespace GeekBrains\Person;
+namespace GeekBrains\Blog;
 
 class Name
 {
@@ -8,6 +8,14 @@ class Name
         private string $firstName,
         private string $lastName
     ) {}
+
+    public function getfirstName() {
+        return $this->firstName;
+    }
+
+    public function getlastName() {
+        return $this->lastName;
+    }
 
     public function __toString()
     {

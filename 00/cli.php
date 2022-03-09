@@ -1,59 +1,20 @@
 <?php
 
-require_once 'vendor/autoload.php';
+use GeekBrains\Blog\Name;
+use GeekBrains\Blog\Repositories\UsersRepository\SqliteUsersRepository;
+use GeekBrains\Blog\User;
 
-use GeekBrains\Person\Name;
-use GeekBrains\Person\Person;
-use GeekBrains\Blog\Post;
-use GeekBrains\Blog\Comment;
+require_once __DIR__ . '/vendor/autoload.php';
+// require_once 'vendor/autoload.php';
 
-switch ($argv[1]) {
-    case 'user':
-        echo getName(Faker\Factory::create());
-        break;
-    case 'post':
-        echo getPost(Faker\Factory::create());
-        break;
-    case 'comment':
-        echo getComment(Faker\Factory::create());
-        break;
-}
+//Создаём объект подключения к SQLite
+$connection = new PDO('sqlite:' . __DIR__ . '/blog.sqlite');
 
-function getName($faker) {
-    return new Name($faker->name(5), $faker->lastname(10));
-}
+// echo new User(123, new Name('Ivan', 'Nikitin'));
 
-function getTitle($faker) {
-    return $faker->text(10);
-}
+//Создаём объект репозитория
+$usersRepository = new SqliteUsersRepository($connection);
 
-function getPostText($faker) {
-    return $faker->text(30);
-}
-
-function getCommentText($faker) {
-    return $faker->text(20);
-}
-
-function getPerson($faker) {
-    return new Person(
-        getName($faker),
-        new DateTimeImmutable()
-    );
-}
-
-function getPost($faker) {
-    return new Post(
-        getPerson($faker),
-        getTitle($faker),
-        getPostText($faker)
-    );
-}
-
-function getComment($faker) {
-    return new Comment(
-        getPerson($faker),
-        getPost($faker),
-        getCommentText($faker)
-    );
-}
+//Добавляем в репозиторий несколько пользователей
+$usersRepository->save(new User(123, new Name('Ivan', 'Nikitin')));
+$usersRepository->save(new User(234, new Name('Anna', 'Petrova')));
