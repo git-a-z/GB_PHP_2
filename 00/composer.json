@@ -1,0 +1,12 @@
+{
+    "name": "00/00",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/",
+            "GeekBrains\\": "src/GeekBrains"
+        }
+    },
+    "require": {
+        "fakerphp/faker": "^1.19"
+    }
+}
