@@ -11,6 +11,6 @@ class Name
 
     public function __toString()
     {
-        return $this->firstName . ' ' . $this->lastName;
+        return sprintf('%s %s', $this->firstName, $this->lastName);
     }
 }

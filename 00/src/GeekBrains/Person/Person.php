@@ -13,7 +13,7 @@ class Person
 
     public function __toString()
     {
-        return $this->name .
-            ' (на сайте с ' . $this->registeredOn->format('Y-m-d') . ')';
+        return sprintf('%s (на сайте с %s)', 
+            $this->name, $this->registeredOn->format('Y-m-d'));
     }
 }
